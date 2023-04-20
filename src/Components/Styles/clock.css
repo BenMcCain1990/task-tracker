@@ -1,0 +1,12 @@
+
+.clock {
+    font-family: 'Poppins', sans-serif;
+    font-size: 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    align-items: flex-end;
+    margin-top: 10px;
+    width: 100%;
+}
