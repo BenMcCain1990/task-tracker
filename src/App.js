@@ -103,9 +103,14 @@ return (
                     </div>
                     <div className='board-span'></div>
                     <div className='board-body'>
-                        { items.map ( ( item ) => (
-                            <TaskCard key={item.id} item={ item } deleteItem={deleteNewItem} moveToInProgress={handleInProgress}/>
-                        ) ) }
+                        { items.map(item => {
+                            return(
+                            <TaskCard key={item.id} item={ item }>
+                                <button onClick={ () => handleInProgress(item.id)} className='move-button'><i class='uil uil-arrow-from-right'></i></button>
+                                <button onClick={ () => deleteNewItem(item.id)} className='delete-button'><i class='uil uil-trash'></i></button>
+                            </TaskCard>
+                            ) 
+                        })}
                     </div>
                 </div>
                 <div className='board-container'>
@@ -117,7 +122,10 @@ return (
                     <div className='board-body'>
                         { inProgressItems.map(item => {
                             return(
-                                <TaskCard key={item.id} item={ item } deleteItem={deleteInProgressItem} moveToInProgress={handleComplete}/>
+                                <TaskCard key={item.id} item={ item }>
+                                    <button onClick={ () => handleComplete(item.id)} className='move-button'><i class='uil uil-arrow-from-right'></i></button>
+                                    <button onClick={ () => deleteInProgressItem(item.id)} className='delete-button'><i class='uil uil-trash'></i></button>
+                                </TaskCard>
                             )
                         })}
                     </div>
@@ -131,7 +139,9 @@ return (
                     <div className='board-body'>
                     { completedItems.map(item => {
                             return(
-                                <TaskCard key={item.id} item={ item } deleteItem={deleteCompletedItem} />
+                                <TaskCard key={item.id} item={ item } deleteItem={deleteCompletedItem}>
+                                    <button onClick={ () => deleteCompletedItem(item.id)} className='delete-button'><i class='uil uil-trash'></i></button>
+                                </TaskCard>
                             )
                         })}
                     </div>
